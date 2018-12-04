@@ -1,0 +1,64 @@
+body{
+    background-image: url(photo/todolistBG.jpg); no-repeat 0px 0px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+}
+
+.box {
+    max-width: 750px;
+    margin: auto;
+    line-height: 100px;
+    padding-top: 130px
+}
+
+.box2 .todolist {
+    min-height: 460px;
+    height: auto;
+    line-height: 1;
+    max-width: 750px;
+    background: rgba(255,255,255,0.6) repeat-y center 0;
+    vertical-align: middle;
+    -webkit-border-radius:30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.todolist h2{
+    text-align: center;
+}
+.todolist .table th.number {
+    width: 20%
+}
+
+.todolist .table th.title {
+    width: 50%
+}
+
+.todolist .table th.control {
+    width: 30%;
+    text-align: center
+}
+
+.todolist .table td:nth-child(3n) {
+    text-align: center
+}
+
+.todolist .table td:last-child {
+    text-align: center
+}
+
+.todolist .table td .strike {
+    text-decoration: line-through;
+    color: #aaa
+}
+
+.todolist .table td .nonstrike {
+    text-decoration: none
+}
+.todolist span{
+    text-align: center;
+}

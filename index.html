@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TodoList by Angular</title>
+<link rel="stylesheet" href="css/clearfix.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="icon/fontawesome-webfont.svg">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+  <div class="box box2">
+    <div class="todolist" ng-app="todolist" ng-controller="todosCtrl">
+  <h2>Elvin's TodoList Exercise by Angular</h2>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="輸入搜尋項目..." ng-model="searchInput">
+      <span class="input-group-btn">
+          <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </span>
+    </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="number">No.</th>
+        <th class="title">待辦事項</th>
+        <th class="control">Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="x in todos | filter: searchInput">
+        <td scope="row">
+          {{ x.id }}
+        </td>
+
+        <td>
+          <span ng-class="{1: 'strike', 0: 'nonstrike'}[x.status]" ng-hide="x.edit">{{ x.title }}</span>
+          <!-- <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
+          <input type="text" id="edit-input-{{ x.id }}" class="form-control" placeholder="type someting here..." ng-show="x.edit">
+        </td>
+
+        <td>
+          <button type="button" class="btn btn-default" ng-click="done(x)" ng-hide="x.status"><i class="fa fa-check" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-default" ng-click="undo(x)" ng-show="x.status"><i class="fa fa-undo" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-default" ng-click="edit(x)" ng-hide="x.edit" ><i class="fas fa-edit"></i></button>
+          <button type="button" class="btn btn-default" ng-click="save(x)" ng-show="x.edit"><i class="far fa-save"></i></button>
+          <button type="button" class="btn btn-default" ng-click="remove(x)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </td>
+      </tr>
+      <tr>
+        <form class="todolistForm" name="todolistForm">
+          <td colspan="2">
+            <input type="text" class="form-control" placeholder="輸入新增項目..." ng-model="newItem" required>
+          </td>
+          <td>
+            <button type="submit" class="btnplus btn-default" ng-click="addItem(newItem)"><i class="fas fa-plus"></i></button>
+          </td>
+        </form>
+      </tr>
+    </tbody>
+  </table>
+  <div align="center">
+    <span class="label label-default">全部 ({{ totalCount() }})</span>
+    <span class="label label-success">已完成 ({{ inactiveCount() }})</span>
+    <span class="label label-warning">待完成 ({{ activeCount() }})</span>
+  </div>
+</div>
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script> 
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/jquery.timeago.js"></script>
+</body>
+</html>
